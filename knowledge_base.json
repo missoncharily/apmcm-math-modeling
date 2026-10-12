@@ -1,0 +1,194 @@
+{
+  "problem_types": {
+    "optimization": {
+      "name": "优化问题",
+      "description": "寻找满足约束条件下的最优解",
+      "keywords": ["最优", "最大化", "最小化", "资源分配", "成本", "效益"],
+      "methods": [
+        {
+          "name": "线性规划",
+          "applicable": "目标函数和约束均为线性",
+          "tools": ["scipy.optimize.linprog", "PuLP", "Gurobi"]
+        },
+        {
+          "name": "非线性规划",
+          "applicable": "目标函数或约束包含非线性",
+          "tools": ["scipy.optimize.minimize", "CVXPY"]
+        },
+        {
+          "name": "整数规划",
+          "applicable": "变量要求为整数",
+          "tools": ["PuLP", "Google OR-Tools"]
+        },
+        {
+          "name": "遗传算法",
+          "applicable": "复杂非凸优化，NP难问题",
+          "tools": ["DEAP", "PyGAD"]
+        }
+      ]
+    },
+    "prediction": {
+      "name": "预测问题",
+      "description": "基于历史数据预测未来趋势",
+      "keywords": ["预测", "趋势", "未来", "时间序列", "回归"],
+      "methods": [
+        {
+          "name": "ARIMA时间序列",
+          "applicable": "平稳或差分后平稳的时序数据",
+          "tools": ["statsmodels"]
+        },
+        {
+          "name": "机器学习回归",
+          "applicable": "多因素影响的预测问题",
+          "tools": ["sklearn.ensemble.RandomForestRegressor", "XGBoost"]
+        },
+        {
+          "name": "神经网络",
+          "applicable": "复杂非线性关系",
+          "tools": ["TensorFlow", "PyTorch", "LSTM"]
+        },
+        {
+          "name": "灰色预测GM(1,1)",
+          "applicable": "小样本、信息不完全",
+          "tools": ["自实现"]
+        }
+      ]
+    },
+    "evaluation": {
+      "name": "评价问题",
+      "description": "对多个对象进行综合评价和排序",
+      "keywords": ["评价", "评估", "排序", "综合", "指标体系"],
+      "methods": [
+        {
+          "name": "层次分析法AHP",
+          "applicable": "主观权重，层次结构清晰",
+          "tools": ["自实现"]
+        },
+        {
+          "name": "熵权法",
+          "applicable": "客观赋权，基于数据离散程度",
+          "tools": ["自实现"]
+        },
+        {
+          "name": "TOPSIS",
+          "applicable": "多指标决策，理想解距离",
+          "tools": ["自实现"]
+        },
+        {
+          "name": "主成分分析PCA",
+          "applicable": "降维、消除指标相关性",
+          "tools": ["sklearn.decomposition.PCA"]
+        }
+      ]
+    },
+    "classification": {
+      "name": "分类聚类问题",
+      "description": "将对象分为不同类别或群组",
+      "keywords": ["分类", "聚类", "划分", "识别", "归类"],
+      "methods": [
+        {
+          "name": "K-means聚类",
+          "applicable": "无监督，类别数已知",
+          "tools": ["sklearn.cluster.KMeans"]
+        },
+        {
+          "name": "层次聚类",
+          "applicable": "树状结构，不需预设类别数",
+          "tools": ["scipy.cluster.hierarchy"]
+        },
+        {
+          "name": "支持向量机SVM",
+          "applicable": "有标签的分类问题",
+          "tools": ["sklearn.svm"]
+        },
+        {
+          "name": "决策树/随机森林",
+          "applicable": "可解释性强的分类",
+          "tools": ["sklearn.tree", "sklearn.ensemble"]
+        }
+      ]
+    },
+    "differential_equation": {
+      "name": "微分方程模型",
+      "description": "描述变化率和系统动态演化",
+      "keywords": ["传播", "扩散", "增长", "动态", "演化", "微分方程"],
+      "methods": [
+        {
+          "name": "常微分方程ODE",
+          "applicable": "单变量时间演化",
+          "tools": ["scipy.integrate.odeint", "scipy.integrate.solve_ivp"]
+        },
+        {
+          "name": "传染病模型SIR/SEIR",
+          "applicable": "疾病传播、信息扩散",
+          "tools": ["自实现ODE"]
+        },
+        {
+          "name": "偏微分方程PDE",
+          "applicable": "空间-时间演化",
+          "tools": ["FiPy", "FEniCS"]
+        }
+      ]
+    },
+    "graph_network": {
+      "name": "图论与网络",
+      "description": "关系网络、路径规划、流量分配",
+      "keywords": ["网络", "路径", "图", "最短路", "流", "连通性"],
+      "methods": [
+        {
+          "name": "最短路径",
+          "applicable": "Dijkstra, Floyd",
+          "tools": ["networkx"]
+        },
+        {
+          "name": "网络流",
+          "applicable": "最大流、最小费用流",
+          "tools": ["networkx.algorithms.flow"]
+        },
+        {
+          "name": "社交网络分析",
+          "applicable": "中心性、社区发现",
+          "tools": ["networkx", "igraph"]
+        }
+      ]
+    }
+  },
+  "paper_structure_checklist": [
+    "摘要（包含问题、方法、结论、关键词）",
+    "问题重述",
+    "问题分析（问题分类、影响因素、难点）",
+    "模型假设（合理且有依据）",
+    "符号说明表",
+    "模型建立（理论基础、数学公式、框图）",
+    "模型求解（算法、步骤、代码）",
+    "结果分析（可视化、解释、敏感性分析）",
+    "模型检验（合理性、稳定性）",
+    "模型评价与推广",
+    "参考文献",
+    "附录（代码、详细数据）"
+  ],
+  "writing_tips": [
+    "摘要要简洁有力，突出创新点",
+    "问题分析要深入，不要简单重复题目",
+    "模型假设要合理，不能过度简化",
+    "公式要规范，使用LaTeX编号",
+    "图表要清晰，坐标轴标注完整",
+    "代码要规范，添加注释",
+    "结果分析要详细，不能只给数字",
+    "敏感性分析体现模型稳定性",
+    "语言要规范，避免口语化",
+    "全文逻辑要连贯，前后呼应"
+  ],
+  "common_mistakes": [
+    "问题分析过于简单，未挖掘深层关系",
+    "模型假设不合理或未说明依据",
+    "缺少模型框图或流程图",
+    "公式推导跳步骤，难以理解",
+    "结果只有数字，缺少分析解释",
+    "图表质量差，坐标轴无标注",
+    "未进行敏感性分析或模型检验",
+    "代码凌乱，无注释",
+    "参考文献格式不规范",
+    "排版混乱，字体大小不一"
+  ]
+}
