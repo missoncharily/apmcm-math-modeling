@@ -7,19 +7,52 @@ D:\竞赛资料\数学建模\参考资料\claude\
 ├── README.md                    # 本文件
 ├── papers_database.json         # 论文数据库 (16篇优秀论文)
 ├── knowledge_base.json          # 方法论知识库
-├── mathmodel.md                 # Claude Code Skill定义
+├── mathmodel.md                 # 建模方法与论文结构参考
 ├── paper_db_tool.py             # Python查询工具
 ├── latex_templates.py           # LaTeX模板库
-└── update_guide.md              # 数据库更新指南
+├── .agents/skills/builtmodel/   # Codex 可调用的比赛助手
+├── .claude/skills/builtmodel/   # Claude Code 可调用的比赛助手
+└── UPDATE_GUIDE.md              # 数据库更新指南
 ```
 
 ## 🚀 快速开始
 
-### 1. 在Claude Code中使用
+### 1. 在 Codex 中使用
 
-如果 `mathmodel.md` 已注册为skill，直接调用：
+在本仓库中打开 Codex 后，可显式调用：
 ```
-/mathmodel
+$builtmodel
+```
+
+也可直接带上子命令：
+```
+$builtmodel analyze 预测未来销量并优化库存
+$builtmodel paper 2025-A
+$builtmodel write 摘要
+```
+
+Codex skill 定义位于 `.agents/skills/builtmodel/SKILL.md`，CLI 位于 `.agents/skills/builtmodel/scripts/main.py`。从仓库根目录也可直接运行 CLI：
+```
+python .agents/skills/builtmodel/scripts/main.py overview
+```
+
+### 2. 在 Claude Code 中使用
+
+在本仓库中打开 Claude Code 后，直接调用：
+```
+/builtmodel
+```
+
+支持 `overview`、`analyze`、`method`、`paper`、`write`、`process`、`code`、`check` 八个子命令，例如：
+```
+/builtmodel analyze 预测未来销量并优化库存
+/builtmodel paper 2025-A
+/builtmodel write 摘要
+```
+
+技能定义位于 `.claude/skills/builtmodel/SKILL.md`，配套 CLI 位于同目录的 `scripts/main.py`。CLI 可从仓库根目录手动运行；数据路径由脚本自动定位：
+```
+python .claude/skills/builtmodel/scripts/main.py overview
 ```
 
 或在对话中提及：
@@ -28,7 +61,9 @@ D:\竞赛资料\数学建模\参考资料\claude\
 "参考2025年A题的论文结构"
 ```
 
-### 2. Python工具使用
+Codex 和 Claude Code 使用各自目录中的 skill 定义；两边提供相同的八个子命令。
+
+### 3. Python工具使用
 
 ```python
 from paper_db_tool import PaperDatabase, load_knowledge_base
@@ -45,7 +80,7 @@ types = classify_problem("预测销售额并优化库存", kb)
 methods = suggest_methods(types[0], kb)
 ```
 
-### 3. LaTeX模板使用
+### 4. LaTeX模板使用
 
 ```python
 from latex_templates import *

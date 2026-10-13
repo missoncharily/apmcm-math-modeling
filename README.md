@@ -142,7 +142,20 @@ classify_problem("预测销售额", kb)  # 自动分类
 
 ---
 
-### 4. 使用指南（2个）
+### 4. Codex 与 Claude Code Skill
+
+两个平台分别使用仓库内的 skill 定义，调用语法不同，CLI 提供相同的八个子命令：
+
+| 平台 | 调用方式 | 仓库目录 |
+| --- | --- | --- |
+| Codex | `$builtmodel` | `.agents/skills/builtmodel/` |
+| Claude Code | `/builtmodel` | `.claude/skills/builtmodel/` |
+
+详细步骤见 [USAGE_GUIDE.md](./USAGE_GUIDE.md)。
+
+---
+
+### 5. 使用指南（2个）
 
 #### 📖 [README.md](./README.md)
 数据库总览和快速开始指南

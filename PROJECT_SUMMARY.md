@@ -7,7 +7,7 @@
 ✅ **结合参考论文** - 整合16篇优秀论文学习方法  
 ✅ **完善执行流程** - 制作72小时完整比赛流程指南  
 ✅ **制作总结文档** - 创建完整知识库体系（14个文件）  
-✅ **安装Skill** - 创建builtmodel技能助手  
+✅ **创建Skill** - 添加可调用的builtmodel技能助手
 
 ---
 
@@ -142,15 +142,20 @@ LaTeX代码模板库：9种常用模板
 
 ---
 
-### 五、Skill技能助手（2个文件）
+### 五、Codex 与 Claude Code 技能助手（5个文件）
 
-#### 13. builtmodel Skill - SKILL.md
-完整的skill说明文档，包含所有命令和使用方法
+#### Codex：`.agents/skills/builtmodel/`
+项目级 Codex skill，可通过 `$builtmodel` 调用；界面名称为 `APMCM BuiltModel (Codex)`。
 
-#### 14. builtmodel Skill - main.py
-Skill实现脚本，支持8个主要命令
+#### Claude Code：`.claude/skills/builtmodel/`
+项目级 Claude Code skill，可通过 `/builtmodel` 调用。
+
+两个平台均使用仓库中的 JSON 知识库和 LaTeX 模板，提供相同的 8 个命令。Skill 定义和 CLI 分别存放在各自的平台目录中。
 
 **Skill功能**:
+
+以下 `/builtmodel` 示例使用 Claude Code 调用方式；Codex 对应写法是 `$builtmodel <子命令>`。
+
 ```bash
 /builtmodel overview      # 知识库概览
 /builtmodel analyze "问题" # 问题分析
@@ -162,7 +167,7 @@ Skill实现脚本，支持8个主要命令
 /builtmodel check 阶段    # 检查清单
 ```
 
-**安装位置**: `C:\Users\33448\.claude\skills\builtmodel\`
+**使用位置**: Codex 使用 `.agents/skills/builtmodel/` 和 `$builtmodel`；Claude Code 使用 `.claude/skills/builtmodel/` 和 `/builtmodel`。
 
 ---
 
@@ -202,9 +207,14 @@ Skill实现脚本，支持8个主要命令
 ├─ USAGE_GUIDE.md
 └─ UPDATE_GUIDE.md
 
-Skill助手: 2个
+Codex Skill: .agents/skills/builtmodel/
 ├─ SKILL.md
-└─ main.py
+├─ agents/openai.yaml
+└─ scripts/main.py
+
+Claude Code Skill: .claude/skills/builtmodel/
+├─ SKILL.md
+└─ scripts/main.py
 ```
 
 ---
@@ -339,10 +349,13 @@ Skill助手: 2个
 - **比赛进行中**: 参考"往届题目分析总结.md"选题
 
 #### 第3步：使用Skill助手
+
+Codex 显式调用使用 `$builtmodel`；Claude Code 使用 `/builtmodel`。以下子命令示例按 Claude Code 写法展示。
+
 ```bash
-/builtmodel overview        # 快速概览
-/builtmodel analyze "问题"  # 分析问题
-/builtmodel process         # 查看流程
+/builtmodel overview           # 快速概览
+/builtmodel analyze 问题描述   # 分析问题
+/builtmodel process            # 查看流程
 ```
 
 ---
@@ -506,10 +519,14 @@ D:\竞赛资料\数学建模\参考资料\claude\
 
 ### Skill助手
 ```
-C:\Users\33448\.claude\skills\builtmodel\
+.agents/skills/builtmodel/        # Codex：$builtmodel
 ├── SKILL.md
-├── main.py
-└── README.md
+├── agents/openai.yaml
+└── scripts/main.py
+
+.claude/skills/builtmodel/
+├── SKILL.md
+└── scripts/main.py
 ```
 
 ### 原始资料
@@ -579,7 +596,7 @@ D:\竞赛资料\数学建模\参考资料\
 **A**: 重点关注"APMCM竞赛执行流程总结.md"，直接使用代码模板。
 
 ### Q3: Skill如何使用？
-**A**: 在Claude Code中输入 `/builtmodel overview` 即可开始。
+**A**: Codex 从本仓库调用 `$builtmodel overview`，定义位于 `.agents/skills/builtmodel/`；Claude Code 输入 `/builtmodel overview`，定义位于 `.claude/skills/builtmodel/`。
 
 ### Q4: 论文数据库如何更新？
 **A**: 参考"UPDATE_GUIDE.md"手动编辑JSON文件。
